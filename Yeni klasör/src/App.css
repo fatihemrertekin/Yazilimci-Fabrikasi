@@ -1,0 +1,61 @@
+* {
+  font-family: "Roboto Slab", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #93bfcf !important;
+}
+
+.weather-app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #6096b4;
+  padding: 80px;
+  border-radius: 5px;
+  color: #ffffff;
+  box-shadow: -1px 2px 16px 15px rgba(0, 0, 0, 0.21) inset;
+  -webkit-box-shadow: -1px 2px 16px 15px rgba(0, 0, 0, 0.21) inset;
+  -moz-box-shadow: -1px 2px 16px 15px rgba(0, 0, 0, 0.21) inset;
+}
+
+h1 {
+  font-size: 50px !important;
+  margin-bottom: 10px !important;
+}
+
+p {
+  font-size: 19px !important;
+}
+
+.btn {
+  width: 35%;
+  margin-bottom: 25px;
+  background-color: #f5f1e5 !important;
+  color: #6096b4 !important;
+  border: 1px solid white !important;
+  font-weight: bolder !important;
+  transition: all 0.3s !important;
+}
+
+.btn:hover {
+  opacity: 0.8 !important;
+}
+
+.btn:focus {
+  font-size: 20px;
+}
+
+.btn-success {
+  margin-right: 20px;
+}
+
+.formats {
+  margin: 0;
+}
