@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hesap Makinesi</title>
+
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      #container {
+        margin: 100px auto;
+        width: 500px;
+      }
+
+      .header {
+        border: 3px solid black;
+        width: 492px;
+        text-align: center;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      h1 {
+        margin: 10px;
+      }
+
+      table,
+      td {
+        border: 3px solid black;
+        text-align: center;
+        font-size: 30px;
+      }
+
+      table {
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      td {
+        border-color: black;
+        background-color: #dddddd;
+        transition: all 0.1s;
+        height: 50px;
+        border-radius: 8px;
+      }
+
+      td:hover {
+        background-color: #8c8c8c;
+        cursor: pointer;
+      }
+
+      td:active {
+        border: 3px solid #8c8c8c;
+      }
+
+      #screen {
+        cursor: default;
+        height: 50px;
+        text-align: left;
+        padding: 5px;
+        background-color: white;
+        font-size: larger;
+      }
+
+      .px50 {
+        width: 15%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="header">
+        <h1>Hesap Makinesi &#128425;</h1>
+      </div>
+
+      <table>
+        <tr>
+          <td id="screen" colspan="3"></td>
+          <td class="operator">C</td>
+        </tr>
+        <tr>
+          <td class="number thirds">1</td>
+          <td class="number thirds">2</td>
+          <td class="number thirds">3</td>
+          <td class="operator px50">/</td>
+        </tr>
+        <tr>
+          <td class="number thirds">4</td>
+          <td class="number thirds">5</td>
+          <td class="number thirds">6</td>
+          <td class="operator px50">-</td>
+        </tr>
+        <tr>
+          <td class="number thirds">7</td>
+          <td class="number thirds">8</td>
+          <td class="number thirds">9</td>
+          <td class="operator px50">+</td>
+        </tr>
+        <tr>
+          <td class="thirds">.</td>
+          <td class="number thirds">0</td>
+          <td class="operator">=</td>
+          <td class="operator px50">*</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      var number = document.querySelectorAll(".number");
+      var screen = document.querySelector("#screen");
+      var operator = document.querySelectorAll(".operator");
+      var optState = false;
+      var opt = "";
+      var final = 0;
+
+      number.forEach((numbers) => {
+        numbers.addEventListener("click", showNumber);
+
+        function showNumber() {
+          if (screen.textContent == "0" || optState) {
+            screen.textContent = "";
+          }
+          screen.textContent += this.textContent;
+          optState = false;
+        }
+      });
+
+      operator.forEach((operators) => {
+        operators.addEventListener("click", calculator);
+
+        function calculator() {
+          optState = true;
+          var newOpt = this.textContent;
+
+          switch (opt) {
+            case "+":
+              screen.textContent = final + Number(screen.textContent);
+              break;
+
+            case "-":
+              screen.textContent = final - Number(screen.textContent);
+              break;
+
+            case "*":
+              screen.textContent = final * Number(screen.textContent);
+              break;
+
+            case "/":
+              screen.textContent = final / Number(screen.textContent);
+              break;
+
+            case "=":
+              final = Number(screen.textContent);
+              break;
+
+            case ".":
+              console.log(screen.textContent);
+              break;
+          }
+
+          final = Number(screen.textContent);
+          opt = newOpt;
+        }
+      });
+    </script>
+  </body>
+</html>
